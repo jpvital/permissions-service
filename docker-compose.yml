@@ -4,9 +4,9 @@ services:
 
   # nestJS backend listening on port 3000
   backend:
-    build: ./backend
+    build: ./
     volumes:
-      - ./backend/src/:/app/src
+      - ./src/:/app/src
     ports:
       - 3000:3000
     links:
