@@ -13,7 +13,7 @@ export class RolesController {
     }
 
     @Post()
-    create(@Body() createRoleDto: createRoleDto): Role {
-        return this.RolesService.create(createRoleDto);
+    create(@Body() createRoleDto: createRoleDto): void {
+        this.RolesService.create(createRoleDto);
     }
 }

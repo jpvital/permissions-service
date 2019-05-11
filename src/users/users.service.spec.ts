@@ -15,4 +15,14 @@ describe('UsersService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+  describe('findAll method', () => {
+    it('findAll method should call db function', () => {});
+  })
+
+  describe('create method', () => {
+    it('method with valid payload should call db function with no errors', () => {});
+    it('duplicate usernames should result in a denied payload', () => {});
+    it('invalid passwords should result in a denied payload', () => {});
+    it('invalid emails should result in a denied payload', () => {});
+  });
 });

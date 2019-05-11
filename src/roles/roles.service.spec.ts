@@ -15,4 +15,12 @@ describe('RolesService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+  
+  describe('findAll method', () => {
+    it('findAll method should call db function', () => {});
+  })
+
+  describe('create method', () => {
+    it('creation of roles with the same name should not be possible', () => {});
+  });
 });

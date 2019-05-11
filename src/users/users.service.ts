@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './interfaces/user.interface'
+import { User as UserInterface } from './interfaces/user.interface'
 import { createUserDto } from './dto/create-user.dto';
+import { User as UserEntity } from './entities/user.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsersService {
-    private readonly users: User[] = [{
+    private readonly users: UserInterface[] = [{
         username: '1',
         email: '1@1.com',
         password: '1',
@@ -17,11 +20,14 @@ export class UsersService {
         avatar: '2.jpeg',
         roles: [{ name: 'moderator' }]
     }]
-    findAll(): User[] {
-        return this.users;
+
+    constructor(@InjectRepository(UserEntity) private usersRepository: Repository<UserEntity>) { }
+
+    findAll(): Promise<UserInterface[]> {
+        return this.usersRepository.find();
     }
 
-    create(createUserDto: createUserDto): User {
-        return <User>createUserDto;
+    create(createUserDto: createUserDto): void {
+        return;
     }
 }

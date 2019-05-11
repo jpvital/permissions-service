@@ -1,0 +1,9 @@
+{
+    "type": "mysql",
+    "port": 3306,
+    "username": "root",
+    "database": "permissions",
+    "entities": ["src/**/entities/*.entity{.ts,.js}"],
+    "synchronize": true,
+    "logging": true
+  }
