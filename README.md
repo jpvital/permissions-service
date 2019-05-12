@@ -14,9 +14,10 @@ This example uses the typeORM module which communicates with a mySQL server.
 The generated server runs inside a docker container.
 
 ## Requirements
+```
 docker
 docker-compose
-
+```
 ## Usage
 To run the server, execute the following from the root directory:
 
