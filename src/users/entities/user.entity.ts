@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { Role } from 'src/roles/entities/role.entity';
 
 @Entity()
@@ -15,6 +15,7 @@ export class User {
     @Column('varchar')
     avatar: string;
 
-    @OneToMany(type => Role, role => role.user)
+    @ManyToMany(type => Role)
+    @JoinTable({name: "user_role"})
     roles: Role[];
 }

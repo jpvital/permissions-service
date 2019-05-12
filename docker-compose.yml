@@ -4,6 +4,7 @@ services:
 
   # nestJS backend listening on port 3000
   backend:
+    container_name: permissions-service
     build: ./
     volumes:
       - ./src/:/app/src
@@ -16,8 +17,13 @@ services:
   # mysql service listening on port 3306, username root, password empty
   mysql:
     image: mysql:5.7.12
+    container_name: permissions-service-storage
     volumes:
       - ./mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: permissions
+      MYSQL_USER: root
     ports:
     - "3306:3306"
     environment:

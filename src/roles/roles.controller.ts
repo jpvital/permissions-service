@@ -8,7 +8,7 @@ export class RolesController {
     constructor(private readonly RolesService: RolesService) {}
     
     @Get()
-    findAll(): Role[] {
+    findAll(): Promise<Role[]> {
         return this.RolesService.findAll();
     }
 

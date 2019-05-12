@@ -8,10 +8,9 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) {}
     
     @Get()
-    findAll(): void {
-        const result = this.usersService.findAll();
-        console.log(result);
-        return;
+    findAll(): Promise<User[]> {
+        const result: Promise<User[]> = this.usersService.findAll();
+        return result;
     }
 
     @Post()

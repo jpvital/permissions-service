@@ -5,7 +5,4 @@ import { User } from 'src/users/entities/user.entity';
 export class Role {
     @PrimaryColumn('varchar')
     name: string;
-
-    @ManyToOne(type => User, user => user.roles)
-    user: User;
 }
