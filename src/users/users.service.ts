@@ -9,10 +9,12 @@ export class UsersService {
     constructor(@InjectRepository(User) private usersRepository: Repository<User>) { }
 
     findAll(): Promise<User[]> {
-        return this.usersRepository.find();
+        return this.usersRepository.find({ relations: ["roles"] });
     }
 
     create(createUserDto: createUserDto): void {
+        const user: User = this.usersRepository.create(createUserDto);
+        user.roles = createUserDto.roles;
         this.usersRepository.insert(createUserDto);
     }
 }
