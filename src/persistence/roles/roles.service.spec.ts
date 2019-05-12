@@ -4,12 +4,11 @@ import { Role } from './entities/role.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { MockType, repositoryMockFactory } from '../../mocks/utils';
-import { createRoleDto } from './dto/create-role.dto';
+import { CreateRoleDto } from './dto/create-role.dto';
 
 describe('RolesService', () => {
   let service: RolesService;
   let repositoryMock: MockType<Repository<Role>>;
-
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -23,7 +22,6 @@ describe('RolesService', () => {
     repositoryMock = module.get(getRepositoryToken(Role));
   });
 
-
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
@@ -36,9 +34,9 @@ describe('RolesService', () => {
 
   describe('create method', () => {
     it('method with valid payload should call db function with no errors', () => {
-      const role: createRoleDto = {
-        name: 'Administrator'
-      }
+      const role: CreateRoleDto = {
+        name: 'Administrator',
+      };
       service.create(role);
       expect(repositoryMock.insert).toHaveBeenCalledWith(role);
     });

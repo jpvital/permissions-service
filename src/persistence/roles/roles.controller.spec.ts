@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RolesController } from './roles.controller';
 import { Injectable } from '@nestjs/common';
-import { createRoleDto } from './dto/create-role.dto';
+import { CreateRoleDto } from './dto/create-role.dto';
 
 @Injectable()
 export class RolesService {
-    findAll(): void{}
-    create(): void{}
-};
+    findAll(): number { return 1; }
+    create(): number { return 1; }
+}
 
 describe('Roles Controller', () => {
   let controller: RolesController;
@@ -23,17 +23,17 @@ describe('Roles Controller', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
-  
-  it('findAll call on controller should trigger service call', ()=>{
+
+  it('findAll call on controller should trigger service call', () => {
     const findAllSpy = jest.spyOn(RolesService.prototype, 'findAll');
-    controller.findAll()
+    controller.findAll();
     expect(findAllSpy).toBeCalled();
   });
-  
-  it('create call on controller should trigger service call', ()=>{
-    const newRole: createRoleDto = {
+
+  it('create call on controller should trigger service call', () => {
+    const newRole: CreateRoleDto = {
       name: 'Administrator',
-    }
+    };
     const findAllSpy = jest.spyOn(RolesService.prototype, 'create');
     controller.create(newRole);
     expect(findAllSpy).toBeCalledWith(newRole);

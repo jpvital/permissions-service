@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createRoleDto } from './dto/create-role.dto';
+import { CreateRoleDto } from './dto/create-role.dto';
 import { Role } from './entities/role.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -12,7 +12,7 @@ export class RolesService {
         return this.rolesRepository.find();
     }
 
-    create(createRoleDto: createRoleDto): void {
+    create(createRoleDto: CreateRoleDto): void {
         this.rolesRepository.insert(createRoleDto);
     }
 }

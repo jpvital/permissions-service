@@ -4,12 +4,11 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { MockType, repositoryMockFactory } from '../../mocks/utils';
-import { createUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
 
 describe('UsersService', () => {
   let service: UsersService;
   let repositoryMock: MockType<Repository<User>>;
-
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -23,7 +22,6 @@ describe('UsersService', () => {
     repositoryMock = module.get(getRepositoryToken(User));
   });
 
-
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
@@ -36,13 +34,13 @@ describe('UsersService', () => {
 
   describe('create method', () => {
     it('method with valid payload should call db function with no errors', () => {
-      const user: createUserDto = {
+      const user: CreateUserDto = {
         username: 'Campos',
         password: 'testPassword123',
         email: 'hello@c.com',
         avatar: 'slash.png',
-        roles: [{ name: 'Administrator' }, { name: 'Owner' }]
-      }
+        roles: [{ name: 'Administrator' }, { name: 'Owner' }],
+      };
       service.create(user);
       expect(repositoryMock.save).toHaveBeenCalledWith(user);
     });

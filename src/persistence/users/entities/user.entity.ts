@@ -5,17 +5,17 @@ import { Role } from '../../roles/entities/role.entity';
 export class User {
     @PrimaryColumn('varchar')
     username: string;
-    
+
     @Column('varchar')
     email: string;
-    
+
     @Column('varchar')
     password: string;
-    
+
     @Column('varchar')
     avatar: string;
 
     @ManyToMany(() => Role, { cascade: ['insert'] })
-    @JoinTable({name: "user_roles"})
+    @JoinTable({name: 'user_roles'})
     roles: Role[];
 }

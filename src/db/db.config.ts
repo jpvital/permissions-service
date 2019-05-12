@@ -4,7 +4,7 @@ import { Role } from '../persistence/roles/entities/role.entity';
 
 export const MySqlbConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-    port: Number.parseInt(process.env.MYSQL_PORT),
+    port: Number.parseInt(process.env.MYSQL_PORT, 10),
     username: process.env.MYSQL_USER,
     database: process.env.MYSQL_DATABASE,
     host: process.env.MYSQL_HOST,

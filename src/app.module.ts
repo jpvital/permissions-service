@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MySqlbConfig } from './db/db.config'
+import { MySqlbConfig } from './db/db.config';
 import dependencies from './persistence';
 
 const { modules, controllers, providers } = dependencies;

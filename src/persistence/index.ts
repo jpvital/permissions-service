@@ -9,4 +9,4 @@ export default {
     controllers: [ RolesController, UsersController ],
     providers: [ RolesService, UsersService ],
     modules: [ RolesModule, UsersModule ],
-}
+};
