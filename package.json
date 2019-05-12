@@ -52,7 +52,8 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "entity"
     ],
     "rootDir": "./",
     "testRegex": ".spec.ts$",

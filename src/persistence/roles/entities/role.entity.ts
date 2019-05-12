@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryColumn } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 
 @Entity()
