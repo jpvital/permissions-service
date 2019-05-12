@@ -13,8 +13,6 @@ export class UsersService {
     }
 
     create(createUserDto: createUserDto): void {
-        const user: User = this.usersRepository.create(createUserDto);
-        user.roles = createUserDto.roles;
-        this.usersRepository.save(user);
+        this.usersRepository.save(createUserDto);
     }
 }

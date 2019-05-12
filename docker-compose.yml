@@ -8,6 +8,12 @@ services:
     build: ./
     volumes:
       - ./src/:/app/src
+    environment:
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: "permissions"
+      MYSQL_USER: "root"
+      MYSQL_HOST: "mysql"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - 3000:3000
     links:
@@ -22,8 +28,10 @@ services:
       - ./mysql:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_DATABASE: permissions
-      MYSQL_USER: root
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: "permissions"
+      MYSQL_USER: "root"
+      MYSQL_HOST: "mysql"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
     - "3306:3306"

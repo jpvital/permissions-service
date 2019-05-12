@@ -1,16 +1,13 @@
 import { Module } from '@nestjs/common';
-import { RolesController } from './roles/roles.controller';
-import { UsersController } from './users/users.controller';
-import { UsersService } from './users/users.service';
-import { RolesService } from './roles/roles.service';
-import { RolesModule } from './roles/roles.module';
-import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MySqlbConfig } from './db/db.config'
+import dependencies from './persistence';
+
+const { modules, controllers, providers } = dependencies;
 
 @Module({
-  imports: [TypeOrmModule.forRoot(MySqlbConfig), UsersModule, RolesModule],
-  controllers: [UsersController, RolesController], //
-  providers: [UsersService, RolesService], //
+  imports: [TypeOrmModule.forRoot(MySqlbConfig), ...modules],
+  controllers: [...controllers],
+  providers: [...providers],
 })
 export class AppModule {}
