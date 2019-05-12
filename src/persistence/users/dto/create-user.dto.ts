@@ -1,6 +1,23 @@
 import { Role } from "../../roles/entities/role.entity";
-import { IsEmail, IsNotEmpty, IsArray, MinLength, ValidateNested } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsArray, MinLength, ValidateNested, ValidationOptions, registerDecorator } from 'class-validator';
 import { Type } from "class-transformer";
+
+export function MinimumRoles(property: string, validationOptions?: ValidationOptions) {
+    return function (object: Object, propertyName: string) {
+         registerDecorator({
+             name: "minimumRoles",
+             target: object.constructor,
+             propertyName: propertyName,
+             constraints: [property],
+             options: validationOptions,
+             validator: {
+                 validate(value: any) {
+                     return value.length >= 2; // you can return a Promise<boolean> here as well, if you want to make async validation
+                 }
+             }
+         });
+    };
+ }
 
 export class createUserDto {
     @IsNotEmpty()
@@ -21,5 +38,6 @@ export class createUserDto {
     @IsNotEmpty()
     @Type(() => Role)
     @ValidateNested({ each: true })
-    readonly roles: Role[];
+    @MinimumRoles('roles', { message: 'User must be assigned at least two roles.' })
+    readonly roles: [Role, Role];
 }
