@@ -16,6 +16,6 @@ export class User {
     avatar: string;
 
     @ManyToMany(() => Role, { cascade: ['insert'] })
-    @JoinTable({name: 'user_roles'})
+    @JoinTable({name: 'user_role'})
     roles: Role[];
 }
