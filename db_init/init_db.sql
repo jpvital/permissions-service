@@ -1,6 +1,6 @@
-#
-# TABLE STRUCTURE FOR: role
-#
+CREATE USER 'root'@'%' IDENTIFIED BY '';
+GRANT ALL ON *.* TO 'root'@'%';
+CREATE DATABASE IF NOT EXISTS permissions;
 
 DROP TABLE IF EXISTS `role`;
 
@@ -8,10 +8,6 @@ CREATE TABLE `role` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-#
-# TABLE STRUCTURE FOR: user
-#
 
 DROP TABLE IF EXISTS `user`;
 
@@ -32,4 +28,3 @@ CREATE TABLE `user_role` (
   CONSTRAINT `FK_0a46637fdeb8fdc74a6c702c6ce` FOREIGN KEY (`userUsername`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_d0de24b67e93878c5beb80a24ce` FOREIGN KEY (`roleName`) REFERENCES `role` (`name`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
