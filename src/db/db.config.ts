@@ -12,3 +12,11 @@ export const MySqlbConfig: TypeOrmModuleOptions = {
     synchronize: true,
     logging: true,
 };
+
+export const SqlLiteDbConfig: TypeOrmModuleOptions = {
+  type: 'sqlite',
+  database: `permissions.sqlite`,
+  entities: [ User, Role ],
+  synchronize: true,
+  logging: true,
+};
