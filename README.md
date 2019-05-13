@@ -57,6 +57,6 @@ Or Users with the following structure to http://localhost:3000/users:
 }
 ```
 
-The API performs validation on mandatory fields, e.g, usernames must not be empty strings, emails must have a valid format, user payloads must contain at least two roles etc.
+The API performs validation on mandatory fields using decorator functions available with the [class-validator](https://github.com/typestack/class-validator) package, e.g, usernames must not be empty strings, emails must have a valid format, user payloads must contain at least two roles etc.
 
 Hitting GET requests to the same addresses will pull all records from their respective database tables.
