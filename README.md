@@ -10,7 +10,7 @@ $ nest new project-name
 
 you can easily generate a server stub.
 
-This example uses the typeORM module which communicates with a mySQL server.
+This example uses the typeORM module which communicates with a sqlite database.
 The generated server runs inside a docker container.
 
 ## Requirements
